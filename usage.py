@@ -9,7 +9,9 @@ app.layout = html.Div([
     pivot_table.PivotTable(
         id='input',
         value='my-value',
-        label='my-label'
+        label='my-label',
+        rows = ["Gender","Province"],
+        cols = []
     ),
     html.Div(id='output')
 ])
