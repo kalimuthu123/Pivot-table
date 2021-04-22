@@ -1,0 +1,8 @@
+table.pvtTable tbody tr th.pvtRowLabel.rowexpanded,table.pvtTable .pvtAxisLabel.expanded {
+    cursor: pointer !important;
+}
+
+table.pvtTable tbody tr th.pvtRowLabel.rowcollapsed,table.pvtTable .pvtAxisLabel.collapsed {
+    cursor: pointer !important;
+}
+

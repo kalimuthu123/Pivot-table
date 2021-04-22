@@ -36,6 +36,11 @@ export default class PivotTable extends Component {
     var format2 =  d3.format(format);
     var aggre1 = $.pivotUtilities.aggregatorTemplates.sum;
     var aggregator = $.pivotUtilities.aggregators["Count"]();
+    var subtotal_opt = {}
+    subtotal_opt["collapseColsAt"] = 0;
+    subtotal_opt["collapseRowsAt"] = 0;
+    subtotal_opt["arrowExpanded"]="[-]";
+    subtotal_opt["arrowCollapsed"]="[+]";
     //var aggregats_para=aggre1(format2)(Items);
 	
 	
@@ -56,14 +61,7 @@ export default class PivotTable extends Component {
         renderer:$.pivotUtilities.subtotal_renderers["Table With Subtotal"],
              rendererName: "Table With Subtotal",
              aggregator: aggregator,
-           rendererOptions: {
-                   rowSubtotalDisplay: {
-                        collapseAt: 1
-                    },
-                    colSubtotalDisplay: {
-                        collapseAt: 1
-                    }
-                },
+             rendererOptions:subtotal_opt,
               hideTotals: true ,
             //   aggregator: aggregats_para, 
          }
