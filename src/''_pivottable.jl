@@ -6,7 +6,7 @@ export ''_pivottable
     ''_pivottable(;kwargs...)
 
 A PivotTable component.
-ExampleComponent is an example component.
+PivotTable is an example component.
 It takes a property, `label`, and
 displays it.
 It renders an input with the property `value`
@@ -17,7 +17,7 @@ Keyword arguments:
 - `data` (Bool | Real | String | Dict | Array; optional): The data displayed in the input.
 - `label` (String; required): A label that will be printed when this component is rendered.
 - `rows` (Bool | Real | String | Dict | Array; optional): The row displayed in the input.
-- `value` (String; optional): The value displayed in the input.
+- `value` (Bool | Real | String | Dict | Array; optional): The value displayed in the input.
 """
 function ''_pivottable(; kwargs...)
         available_props = Symbol[:id, :cols, :data, :label, :rows, :value]

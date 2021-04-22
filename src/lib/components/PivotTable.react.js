@@ -10,7 +10,7 @@ import $ from 'jquery';
 window.$ = $;
 
 /**
- * ExampleComponent is an example component.
+ * PivotTable is an example component.
  * It takes a property, `label`, and
  * displays it.
  * It renders an input with the property `value`
@@ -31,18 +31,22 @@ export default class PivotTable extends Component {
 	var tableid = this.props.id
 	var tablerows = this.props.rows
 	var tablecols = this.props.cols
-	//var data = this.data
+	let jsondata = this.props.value
 	var format ='.3s';
     var format2 =  d3.format(format);
-	var aggre1 = $.pivotUtilities.aggregatorTemplates.sum;
+    var aggre1 = $.pivotUtilities.aggregatorTemplates.sum;
+    var aggregator = $.pivotUtilities.aggregators["Count"]();
     //var aggregats_para=aggre1(format2)(Items);
 	
 	
 	
 	$.getJSON("https://nagarajanchinnasamy.github.io/subtotal/examples/data/mps.json", function(data) {
-		
+        console.log(typeof (data))
+        console.log("data", data)
+        console.log(typeof (jsondata))
+        console.log("data",jsondata)
     $(document.getElementById(tableid)).pivot(
-        data,
+        jsondata,
          {                 
          onRefresh: function (config) {
             },
@@ -50,22 +54,21 @@ export default class PivotTable extends Component {
         rows: tablerows,
         cols: tablecols ,
         renderer:$.pivotUtilities.subtotal_renderers["Table With Subtotal"],
-           //rendererName: "Table With Subtotal",
-           rendererName:"Heatmap",
+             rendererName: "Table With Subtotal",
+             aggregator: aggregator,
            rendererOptions: {
                    rowSubtotalDisplay: {
-                        collapseAt: 0
+                        collapseAt: 1
                     },
                     colSubtotalDisplay: {
-                        collapseAt: 0
+                        collapseAt: 1
                     }
-                }
-          /*rendererOptions:subtotal_opt,
+                },
               hideTotals: true ,
-               aggregator: aggregats_para, */
+            //   aggregator: aggregats_para, 
          }
       );
-	  });
+	 });
     }
   
     render() {
@@ -94,7 +97,7 @@ PivotTable.propTypes = {
     /**
      * The value displayed in the input.
      */
-    value: PropTypes.string,
+    value: PropTypes.any,
     
 	/**
      * The row displayed in the input.

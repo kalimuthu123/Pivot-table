@@ -5,7 +5,7 @@ from dash.development.base_component import Component, _explicitize_args
 
 class PivotTable(Component):
     """A PivotTable component.
-ExampleComponent is an example component.
+PivotTable is an example component.
 It takes a property, `label`, and
 displays it.
 It renders an input with the property `value`
@@ -28,7 +28,7 @@ Keyword arguments:
 - rows (boolean | number | string | dict | list; optional):
     The row displayed in the input.
 
-- value (string; optional):
+- value (boolean | number | string | dict | list; optional):
     The value displayed in the input."""
     @_explicitize_args
     def __init__(self, id=Component.UNDEFINED, label=Component.REQUIRED, value=Component.UNDEFINED, rows=Component.UNDEFINED, cols=Component.UNDEFINED, data=Component.UNDEFINED, **kwargs):
